@@ -1,0 +1,50 @@
+<template>
+    <div class="slds-card">
+        <!-- Hero Section -->
+        <div class="slds-p-around_large slds-theme_brand slds-text-align_center">
+            <h1 class="slds-text-heading_large slds-m-bottom_small">MEAL PLANS FOR EVERYONE</h1>
+            <p class="slds-text-heading_medium slds-m-bottom_medium">Healthy, delicious, and chef-prepared food delivered right to your doorstep.</p>
+            <lightning-button label="Explore All Plans" variant="success" onclick={navigateToPlans}></lightning-button>
+        </div>
+
+        <!-- Featured Plans Section -->
+        <div class="slds-p-around_large">
+            <h2 class="slds-text-heading_medium slds-m-bottom_medium slds-text-align_center">Featured Meal Plans</h2>
+            <div class="slds-grid slds-wrap slds-gutters">
+                <template for:each={topPlans} for:item="plan">
+                    <div key={plan.Id} class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3 slds-m-bottom_medium">
+                        <lightning-card title={plan.Name} icon-name="custom:custom18" class="slds-card_boundary">
+                            <div class="slds-p-horizontal_small">
+                                <p class="slds-text-heading_small slds-m-bottom_x-small">${plan.Price__c} / month</p>
+                                <p class="slds-m-bottom_x-small"><strong>Duration:</strong> {plan.Duration__c} Days</p>
+                                <template if:true={plan.Discount__c}>
+                                    <p class="slds-m-bottom_x-small"><strong>Discount:</strong> {plan.Discount__c}% OFF</p>
+                                </template>
+                                <template if:true={plan.RatingsAverage__c}>
+                                    <p class="slds-m-bottom_medium"><strong>Rating:</strong> {plan.RatingsAverage__c} ★</p>
+                                </template>
+                                <lightning-button label="View Details" variant="brand" data-id={plan.Id} onclick={navigateToPlanDetail}></lightning-button>
+                            </div>
+                        </lightning-card>
+                    </div>
+                </template>
+            </div>
+        </div>
+
+        <!-- Customer Reviews Section -->
+        <div class="slds-p-around_large slds-theme_shade">
+            <h2 class="slds-text-heading_medium slds-m-bottom_medium slds-text-align_center">What Our Customers Say</h2>
+            <div class="slds-grid slds-wrap slds-gutters">
+                <template for:each={topReviews} for:item="rev">
+                    <div key={rev.Id} class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3 slds-m-bottom_medium">
+                        <div class="slds-box slds-theme_default">
+                            <p class="slds-text-title_bold slds-m-bottom_x-small">{rev.User__r.Name}</p>
+                            <p class="slds-m-bottom_small">"{rev.Review__c}"</p>
+                            <span class="slds-badge slds-theme_warning">Rating: {rev.Rating__c} ★</span>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </div>
+</template>

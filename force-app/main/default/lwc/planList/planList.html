@@ -1,0 +1,31 @@
+<template>
+    <lightning-card title="Food Plans" icon-name="custom:custom18">
+        <div class="slds-m-around_medium">
+            <template if:true={plans}>
+                <div class="slds-grid slds-wrap slds-gutters">
+                    <template for:each={plans} for:item="plan">
+                        <div key={plan.Id} class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3 slds-m-bottom_medium">
+                            <lightning-card title={plan.Name} class="slds-card_boundary">
+                                <div class="slds-p-horizontal_small">
+                                    <p><strong>Price:</strong> ${plan.Price__c}</p>
+                                    <p><strong>Duration:</strong> {plan.Duration__c} Days</p>
+                                    <template if:true={plan.Discount__c}>
+                                        <p><strong>Discount:</strong> {plan.Discount__c}%</p>
+                                    </template>
+                                    <template if:true={plan.RatingsAverage__c}>
+                                        <p><strong>Rating:</strong> {plan.RatingsAverage__c} / 5</p>
+                                    </template>
+                                </div>
+                            </lightning-card>
+                        </div>
+                    </template>
+                </div>
+            </template>
+            <template if:true={error}>
+                <div class="slds-text-color_error">
+                    Error loading plans.
+                </div>
+            </template>
+        </div>
+    </lightning-card>
+</template>

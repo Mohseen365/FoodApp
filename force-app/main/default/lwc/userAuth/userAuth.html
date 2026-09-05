@@ -1,0 +1,50 @@
+<template>
+    <lightning-card title="Authentication Center" icon-name="standard:portal">
+        <div class="slds-m-around_medium">
+            <div class="slds-align_absolute-center slds-m-bottom_medium">
+                <lightning-button-group>
+                    <lightning-button label="Login" value="login" variant={isLogin ? 'brand' : 'neutral'} onclick={handleTabSelect}></lightning-button>
+                    <lightning-button label="Sign Up" value="signup" variant={isSignup ? 'brand' : 'neutral'} onclick={handleTabSelect}></lightning-button>
+                    <lightning-button label="Forgot Password" value="forgot" variant={isForgot ? 'brand' : 'neutral'} onclick={handleTabSelect}></lightning-button>
+                </lightning-button-group>
+            </div>
+
+            <!-- Login Section -->
+            <template if:true={isLogin}>
+                <div class="slds-form slds-form_stacked">
+                    <h3 class="slds-text-heading_small slds-m-bottom_small">Login to your account</h3>
+                    <lightning-input label="Email" type="email" value={loginEmail} data-id="loginEmail" onchange={handleInputChange}></lightning-input>
+                    <lightning-input label="Password" type="password" value={loginPassword} data-id="loginPassword" onchange={handleInputChange}></lightning-input>
+                    <div class="slds-m-top_medium">
+                        <lightning-button label="Login" variant="brand" onclick={handleLoginSubmit}></lightning-button>
+                    </div>
+                </div>
+            </template>
+
+            <!-- Signup Section -->
+            <template if:true={isSignup}>
+                <div class="slds-form slds-form_stacked">
+                    <h3 class="slds-text-heading_small slds-m-bottom_small">Create a new account</h3>
+                    <lightning-input label="Full Name" value={signupName} data-id="signupName" onchange={handleInputChange}></lightning-input>
+                    <lightning-input label="Email" type="email" value={signupEmail} data-id="signupEmail" onchange={handleInputChange}></lightning-input>
+                    <lightning-input label="Password" type="password" value={signupPassword} data-id="signupPassword" onchange={handleInputChange}></lightning-input>
+                    <lightning-input label="Confirm Password" type="password" value={signupConfirmPassword} data-id="signupConfirmPassword" onchange={handleInputChange}></lightning-input>
+                    <div class="slds-m-top_medium">
+                        <lightning-button label="Sign Up" variant="brand" onclick={handleSignupSubmit}></lightning-button>
+                    </div>
+                </div>
+            </template>
+
+            <!-- Forgot Password Section -->
+            <template if:true={isForgot}>
+                <div class="slds-form slds-form_stacked">
+                    <h3 class="slds-text-heading_small slds-m-bottom_small">Reset Your Password</h3>
+                    <lightning-input label="Registered Email" type="email" value={forgotEmail} data-id="forgotEmail" onchange={handleInputChange}></lightning-input>
+                    <div class="slds-m-top_medium">
+                        <lightning-button label="Send Reset Link" variant="brand" onclick={handleForgotSubmit}></lightning-button>
+                    </div>
+                </div>
+            </template>
+        </div>
+    </lightning-card>
+</template>

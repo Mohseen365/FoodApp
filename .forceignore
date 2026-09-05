@@ -1,0 +1,13 @@
+# .forceignore
+# List files or directories below to ignore them when building packages or deploying to Salesforce orgs.
+
+.git
+.gitignore
+node_modules
+package.json
+package-lock.json
+public/
+backend Notes/
+app.js
+helper.js
+*.md
