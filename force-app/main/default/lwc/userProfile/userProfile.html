@@ -1,0 +1,18 @@
+<template>
+    <lightning-card title="User Profile" icon-name="standard:user">
+        <template if:true={isLoading}>
+            <lightning-spinner alternative-text="Updating Profile"></lightning-spinner>
+        </template>
+        <div class="slds-m-around_medium">
+            <div class="slds-form slds-form_stacked">
+                <lightning-input label="Username" value={username} disabled></lightning-input>
+                <lightning-input label="Full Name" value={name} onchange={handleNameChange}></lightning-input>
+                <lightning-input label="Email" value={email} type="email" onchange={handleEmailChange}></lightning-input>
+                <lightning-input label="Title / Role" value={title} onchange={handleTitleChange}></lightning-input>
+                <div class="slds-m-top_medium">
+                    <lightning-button label="Update Profile" variant="brand" onclick={handleUpdateProfile}></lightning-button>
+                </div>
+            </div>
+        </div>
+    </lightning-card>
+</template>
