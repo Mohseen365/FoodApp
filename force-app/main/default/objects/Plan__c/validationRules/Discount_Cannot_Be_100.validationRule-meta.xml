@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Discount_Cannot_Be_100</fullName>
+    <active>true</active>
+    <description>Ensures plan discount is less than 100%.</description>
+    <errorConditionFormula>Discount__c &gt;= 100</errorConditionFormula>
+    <errorDisplayField>Discount__c</errorDisplayField>
+    <errorMessage>Discount cannot be 100% or greater.</errorMessage>
+</ValidationRule>
